@@ -12,15 +12,19 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         int state = intent.getIntExtra("state", 0);
+        //hareketli ve cepte
         if(state == 1){
             audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_RAISE, 0);
         }
+        //hareketsiz masada
         else if(state == 2){
             audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, 0);
         }
+        //hareketsiz cepte
         else if(state == 3){
             audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, 0);
         }
+        //tespit edilemedi
         else if(state == 4){
             audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_SAME, 0);
         }
